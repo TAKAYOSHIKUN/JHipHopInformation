@@ -1,0 +1,21 @@
+databases:
+  - name: JHipHopInformation_DB
+    databaseName: jhiphopinformation_db
+    user: JHipHopInformation
+    region: singapore
+
+services:
+  - type: web
+    name: JHipHopInformation
+    env: ruby
+    region: singapore
+    plan: free
+    buildCommand: "./bin/render-build.sh"
+    startCommand: "bundle exec puma -C config/puma.rb"
+    envVars:
+      - key: DATABASE_URL
+        fromDatabase:
+          name: JHipHopInformation_DB
+          property: connectionString
+      - key: RAILS_MASTER_KEY
+        sync: false
