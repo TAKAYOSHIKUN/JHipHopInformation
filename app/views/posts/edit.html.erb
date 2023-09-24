@@ -1,0 +1,28 @@
+<%= form_for @post do |f| %>
+    <div class="field">
+    <%= f.label :DAY %>
+   <%= f.date_field :day %>
+  </div>
+  <div class="field">
+    <%= f.label :EVENT %>
+    <%= f.text_field :event, :size => 30 %>
+  </div>
+
+  <div class="field">
+    <%= f.label :PLACE %>
+    <%= f.text_field :place, :size => 30 %>
+  </div>
+
+  <div class="field">
+    <%= f.label :ARTIST  %>
+    <%= f.text_area :artist, :size => "30x2" %>
+  </div>
+
+  <div class="field">
+    <%= f.label :MUSIC  %>
+    <%= f.text_area :music, :size => "30x2" %>
+  </div>
+
+  <%= f.submit "EDIT" %>
+<% end %>
+<%= link_to "BACK", post_path %>

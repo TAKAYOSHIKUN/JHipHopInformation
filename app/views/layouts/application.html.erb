@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>J-HipHop Information</title>
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <%= csrf_meta_tags %>
+    <%= csp_meta_tag %>
+
+    <script src="https://kit.fontawesome.com/20251894a5.js" crossorigin="anonymous"></script>
+
+    <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+    <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
+  </head>
+
+  <body>
+ <header>
+  <h1>J-HipHop Information</h1>
+  <div class="header-list">
+   <ul>
+    <% if user_signed_in? %>
+     <li><%= link_to "NEW POST", new_post_path %></li>
+     <li><%= link_to "MYPAGE", user_path(current_user.id) %></li>
+     <li><%= link_to 'LOGOUT', destroy_user_session_path, method: :delete %></li>
+    <% else %>
+     <li><%= link_to "REGISTRATION", new_user_registration_path %></li>
+     <li><%= link_to "LOGIN", new_user_session_path %></li>
+    <% end %>
+   </ul>
+  </div>
+ </header>
+ <main>
+  <%= yield %>
+ </main>
+</body>
+</html>

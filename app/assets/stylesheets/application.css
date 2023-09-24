@@ -1,0 +1,70 @@
+/*
+ * This is a manifest file that'll be compiled into application.css, which will include all the files
+ * listed below.
+ *
+ * Any CSS and SCSS file within this directory, lib/assets/stylesheets, or any plugin's
+ * vendor/assets/stylesheets directory can be referenced here using a relative path.
+ *
+ * You're free to add application-wide styles to this file and they'll appear at the bottom of the
+ * compiled file so the styles you add here take precedence over styles defined in any other CSS/SCSS
+ * files in this directory. Styles in this file should be added after the last require_* statement.
+ * It is generally better to create a new file per style scope.
+ *
+ *= require_tree .
+ *= require_self
+ */
+
+ * {
+    padding: 0px;;
+    margin: 0px;
+  }
+  body {
+    font-family: 'Courier New', Courier, monospace;
+  }
+  header {
+    background-color: #a60098;
+    height: 90px;
+    font-weight: bold;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  :hover{color: #8a5fd3; }
+
+  header a {
+    background-color: rgb(0, 0, 0);
+    color: #a60098; 
+    text-decoration: none;
+    font-family: 'Courier New', Courier, monospace;
+  } 
+  
+
+header h1 {
+  color: #a60098;
+  background-color: #000000;
+  margin-left: 10px;
+}
+.header-list {
+  display: flex;
+  align-items: center;
+}
+header ul {
+  display: flex;
+}
+header li {
+  list-style: none;
+  margin-right: 40px;
+}
+footer {
+    color: rgb(27, 4, 4);
+    height: 30px;
+    background-color: #000;
+    bottom: 0;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    position: fixed;
+    justify-content: flex-end;
+  }
+  

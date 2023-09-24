@@ -1,0 +1,59 @@
+<div class="post_show_title_box">
+<div class="post_show_title"><font size="6">DETAIL</font>
+<div class="post_show_title2_box">
+<div class="post_show_title2"><font size="5">EVENT</font>
+<div class="post_show">
+  <p><%= @post.day %></p>
+  <p><%= @post.event %></p>
+  <p><%= @post.place %></p>
+  <%= image_tag @post.image_url, size: "250x200" if @post.image? %>
+  <p><%= @post.artist %></p>
+  <p><%= @post.music %></p>
+  <%= link_to "EDIT", edit_post_path(@post.id) %>
+  <% if user_signed_in? && current_user.id == @post.user_id %>
+  <%= link_to "DELETE", post_path(@post.id), method: :delete %>
+  <% end %> 
+  <p><%= @post.created_at %></p>
+    <% if user_signed_in? %>
+      <% if current_user.already_liked?(@post) %>
+        <%= link_to post_like_path(@post), method: :delete do %>
+            <i class="fas fa-heart"></i><%= @post.likes.count %>
+        <% end %>
+      <% else %>
+        <%= link_to post_likes_path(@post), method: :post do %>
+            <i class="far fa-heart"></i><%= @post.likes.count %>
+        <% end %>
+      <% end %>
+    <% else %>
+    <i class="far fa-heart"></i><%= @post.likes.count %>
+    <% end %>
+</div>
+
+
+<div class="post_show_liked"><font size="5">LIKED USERS</font>
+<% @post.liked_users.each do |user| %>
+  <li><%= user.email %></li>
+<% end %>
+
+
+<div class="comment-wrapper"><font size="5">ALL COMMENTS</font>
+  <% @comments.each do |c| %>
+    <div>
+      <%= c.user.email unless c.user.blank? %>
+      <br>
+      <%= c.content %>
+    </div>
+      <br>
+  <% end %>
+
+  <% if user_signed_in? %>
+    <%= form_with(model: [@post, @comment], local: true) do |f| %>
+      <%= f.text_area :content %>
+      <%= button_tag type: "submit" do %>
+        <i class="far fa-comments"></i> COMMENT
+      <% end %>
+    <% end %>
+  <% end %>
+</div>
+
+<%= link_to "BACK HOME", posts_path %>

@@ -1,0 +1,25 @@
+<div class="title_area_in">
+<div class="title_in"><font size="7">LIVE INFORMATION</font>
+<div class="serch_area">
+<div class="serch"><font size="5">ARTIST SERCH</font>
+</div>
+
+ <%= form_tag({controller:"posts",action:"index"}, method: :get) do %>
+   <%= text_field_tag :search %>
+   <%= submit_tag 'SERCH'  %>
+<% end %>
+<div class="posts-container">
+<% if user_signed_in? %>
+<% end %>
+  <% @posts.each do |t| %>
+    <%= image_tag t.user.image_url, size: "250x200" if t.user.image? %>
+    <div class="post">
+      <%= t.day %>
+      <%= t.event %>
+      <%= t.place %>
+      <%= t.artist %>
+      <%= t.music %>
+      <%= link_to "DETAIL", post_path(t.id) %>
+    </div>
+  <% end %>
+</div>

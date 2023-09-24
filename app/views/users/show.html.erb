@@ -1,0 +1,17 @@
+<h1>USER INFORMATION</h1>
+<p>NAME : <%= @user.name %></p>
+<p>MAIL ADRESS : <%= @user.email %></p>
+<p>PROFILE : <%= @user.profile %></p>
+
+<% if current_user.id == @user.id %>
+  <%= link_to "EDIT", edit_user_registration_path %>
+<% end %>
+
+<h1>ALL POSTS</h1>
+<% @user.posts.each do |t| %>
+ <p><%= t.user.name %></p>
+ <p><%= t.event %></p>
+<% end %>
+<%= image_tag @user.image_url, size: "250x200" if @user.image? %>
+
+<%= link_to "BACK HOME", posts_path %>
